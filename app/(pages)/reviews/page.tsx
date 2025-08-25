@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import fs from 'fs';
 import path from 'path';
 import Card from '../../components/Card';
+import AnimateOnScroll from '../../components/AnimateOnScroll';
 
 export const metadata: Metadata = {
   title: 'รีวิวทั้งหมด - Dealsdee',
@@ -153,17 +154,18 @@ export default function ReviewsPage() {
       {/* Reviews Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {displayReviews.map(review => (
-          <Card
-            key={review.slug}
-            title={review.title}
-            description={review.description}
-            excerpt={review.excerpt}
-            imageUrl={`https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&h=450&fit=crop`}
-            href={`/reviews/${review.slug}`}
-            date={review.date}
-            score={review.score}
-            badge={review.score >= 9.0 ? "Editor's Choice" : undefined}
-          />
+          <AnimateOnScroll key={review.slug}>
+            <Card
+              title={review.title}
+              description={review.description}
+              excerpt={review.excerpt}
+              imageUrl={`https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&h=450&fit=crop`}
+              href={`/reviews/${review.slug}`}
+              date={review.date}
+              score={review.score}
+              badge={review.score >= 9.0 ? "Editor's Choice" : undefined}
+            />
+          </AnimateOnScroll>
         ))}
       </div>
 

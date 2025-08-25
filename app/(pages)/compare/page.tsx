@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Card from '../../components/Card';
+import AnimateOnScroll from '../../components/AnimateOnScroll';
 
 export const metadata: Metadata = {
   title: 'บทความเปรียบเทียบทั้งหมด - Dealsdee',
@@ -160,17 +161,18 @@ export default function ComparePage() {
       {/* Comparison Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {comparisonArticles.map(article => (
-          <Card
-            key={article.id}
-            title={article.title}
-            description={article.description}
-            excerpt={article.excerpt}
-            imageUrl={article.imageUrl}
-            href={article.href}
-            date={article.date}
-            score={article.score}
-            badge={article.badge}
-          />
+          <AnimateOnScroll key={article.id}>
+            <Card
+              title={article.title}
+              description={article.description}
+              excerpt={article.excerpt}
+              imageUrl={article.imageUrl}
+              href={article.href}
+              date={article.date}
+              score={article.score}
+              badge={article.badge}
+            />
+          </AnimateOnScroll>
         ))}
       </div>
 

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Card from '../components/Card';
+import AnimateOnScroll from '../components/AnimateOnScroll';
 
 export const metadata: Metadata = {
   title: 'Dealsdee: ค้นหาดีลและรีวิวที่ดีที่สุด',
@@ -95,6 +96,7 @@ export default function HomePage() {
       </section>
 
       {/* Categories Section */}
+      <AnimateOnScroll>
       <section className="px-6 py-16 sm:px-12 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="text-center">
@@ -118,8 +120,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </AnimateOnScroll>
 
       {/* Featured Articles Section */}
+      <AnimateOnScroll>
       <section className="bg-white px-6 py-16 sm:px-12 sm:py-24 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="flex items-center justify-between mb-10">
@@ -133,13 +137,14 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {featuredArticles.map((article, index) => (
-              <div 
-                key={article.id}
-                className="animate-slideUp stagger-animation"
-                style={{ '--stagger-delay': index + 3 } as React.CSSProperties}
-              >
-                <Card {...article} />
-              </div>
+              <AnimateOnScroll key={article.id}>
+                <div 
+                  className="animate-slideUp stagger-animation"
+                  style={{ '--stagger-delay': index + 3 } as React.CSSProperties}
+                >
+                  <Card {...article} />
+                </div>
+              </AnimateOnScroll>
             ))}
           </div>
           <div className="mt-10 text-center sm:hidden">
@@ -149,8 +154,10 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </AnimateOnScroll>
 
       {/* Tool Promotion Section */}
+      <AnimateOnScroll>
       <section className="bg-gray-50 px-6 py-16 sm:px-12 lg:px-16">
         <div className="mx-auto max-w-4xl">
           <Link href="/tools/value-calculator" className="block group">
@@ -180,8 +187,10 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+      </AnimateOnScroll>
 
       {/* Newsletter Section */}
+      <AnimateOnScroll>
       <section className="bg-gradient-to-r from-primary to-accent px-6 py-16 text-white">
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-bold sm:text-4xl">อย่าพลาดดีลดีๆ</h2>
@@ -203,6 +212,7 @@ export default function HomePage() {
           </form>
         </div>
       </section>
+      </AnimateOnScroll>
     </main>
   );
 }
