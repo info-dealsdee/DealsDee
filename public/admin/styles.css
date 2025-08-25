@@ -1,0 +1,740 @@
+/* ===========================================
+   Dealsdee CMS - Custom UI/UX Best Practices
+   Note: Using more specific selectors to avoid DOM conflicts
+   =========================================== */
+
+/* Global Variables */
+:root {
+  --primary-color: #111827;
+  --accent-color: #F97316;
+  --background: #F9FAFB;
+  --surface: #FFFFFF;
+  --text-primary: #1F2937;
+  --text-secondary: #6B7280;
+  --text-muted: #9CA3AF;
+  --border: #E5E7EB;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+
+/* Font Import - Inter for better readability */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Base Styles - More specific to avoid conflicts */
+#nc-root {
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif !important;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#nc-root * {
+  box-sizing: border-box;
+}
+
+/* ===========================================
+   HEADER & NAVIGATION IMPROVEMENTS
+   =========================================== */
+
+/* Main Header */
+[class*="AppHeader"] {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--border) !important;
+  box-shadow: var(--shadow) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  min-height: 70px !important;
+}
+
+/* App Header Title */
+[class*="AppHeader"] h1,
+[class*="AppHeader"] h2 {
+  color: var(--primary-color) !important;
+  font-weight: 700 !important;
+  font-size: var(--font-size-2xl) !important;
+  margin: 0 !important;
+}
+
+/* User Info & Login */
+[class*="LoginPage"] {
+  background: linear-gradient(135deg, var(--background) 0%, #EEF2FF 100%) !important;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[class*="LoginButton"] {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  box-shadow: var(--shadow) !important;
+}
+
+[class*="LoginButton"]:hover {
+  background: #EA580C !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* ===========================================
+   SIDEBAR & NAVIGATION IMPROVEMENTS
+   =========================================== */
+
+/* Main Sidebar */
+[class*="Sidebar"] {
+  background: var(--surface) !important;
+  border-right: 1px solid var(--border) !important;
+  width: 280px !important;
+  padding: var(--spacing-lg) 0 !important;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Collection Items */
+[class*="SidebarNav"] ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+[class*="SidebarNav"] li {
+  margin: var(--spacing-xs) var(--spacing-md) !important;
+}
+
+[class*="SidebarNav"] a {
+  display: flex !important;
+  align-items: center !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  color: var(--text-secondary) !important;
+  text-decoration: none !important;
+  border-radius: var(--border-radius) !important;
+  font-weight: 500 !important;
+  font-size: var(--font-size-base) !important;
+  transition: all 0.2s ease !important;
+  position: relative;
+}
+
+[class*="SidebarNav"] a:hover {
+  background: #F3F4F6 !important;
+  color: var(--primary-color) !important;
+  transform: translateX(4px) !important;
+}
+
+[class*="SidebarNav"] a.active,
+[class*="SidebarNav"] a[aria-current="page"] {
+  background: linear-gradient(90deg, var(--accent-color), #FB923C) !important;
+  color: white !important;
+  font-weight: 600 !important;
+  box-shadow: var(--shadow) !important;
+}
+
+/* ===========================================
+   CONTENT AREA IMPROVEMENTS
+   =========================================== */
+
+/* Main Content Area */
+[class*="App-content"] {
+  background: var(--background) !important;
+  min-height: calc(100vh - 70px) !important;
+  padding: var(--spacing-xl) !important;
+}
+
+/* Collection List */
+[class*="CollectionPage"] {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: var(--surface) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow) !important;
+  overflow: hidden;
+}
+
+/* Collection Header */
+[class*="CollectionTop"] {
+  background: var(--surface) !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: var(--spacing-xl) !important;
+}
+
+[class*="CollectionTop"] h1 {
+  color: var(--primary-color) !important;
+  font-weight: 700 !important;
+  font-size: var(--font-size-2xl) !important;
+  margin: 0 0 var(--spacing-sm) 0 !important;
+}
+
+/* New Entry Button */
+button[class*="NewEntryButton"],
+[class*="button-new"] {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--spacing-sm) !important;
+}
+
+button[class*="NewEntryButton"]:hover,
+[class*="button-new"]:hover {
+  background: #EA580C !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* ===========================================
+   ENTRY LIST IMPROVEMENTS
+   =========================================== */
+
+/* Entry Cards */
+[class*="EntryCard"] {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--border-radius) !important;
+  margin: var(--spacing-md) !important;
+  padding: var(--spacing-lg) !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+[class*="EntryCard"]:hover {
+  border-color: var(--accent-color) !important;
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-2px) !important;
+}
+
+[class*="EntryCard"] h2 {
+  color: var(--primary-color) !important;
+  font-size: var(--font-size-lg) !important;
+  font-weight: 600 !important;
+  margin: 0 0 var(--spacing-sm) 0 !important;
+  line-height: 1.4 !important;
+}
+
+[class*="EntryCard"] p {
+  color: var(--text-secondary) !important;
+  font-size: var(--font-size-sm) !important;
+  line-height: 1.5 !important;
+  margin: var(--spacing-sm) 0 !important;
+}
+
+/* Entry Meta Information */
+[class*="EntryCard"] time,
+[class*="EntryCard"] [class*="meta"] {
+  color: var(--text-muted) !important;
+  font-size: var(--font-size-sm) !important;
+  font-weight: 500 !important;
+}
+
+/* ===========================================
+   FORM & EDITOR IMPROVEMENTS
+   =========================================== */
+
+/* Editor Container */
+[class*="EditorContainer"] {
+  background: var(--surface) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow) !important;
+  overflow: hidden;
+}
+
+/* Form Fields */
+[class*="FieldWrapper"] {
+  margin: var(--spacing-lg) 0 !important;
+}
+
+[class*="FieldLabel"] {
+  color: var(--primary-color) !important;
+  font-weight: 600 !important;
+  font-size: var(--font-size-base) !important;
+  margin-bottom: var(--spacing-sm) !important;
+  display: block !important;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="datetime-local"],
+textarea,
+select {
+  width: 100% !important;
+  padding: var(--spacing-md) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--border-radius) !important;
+  font-size: var(--font-size-base) !important;
+  font-family: 'Inter', sans-serif !important;
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  transition: all 0.2s ease !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus {
+  outline: none !important;
+  border-color: var(--accent-color) !important;
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1) !important;
+}
+
+/* Textarea Specific */
+textarea {
+  min-height: 120px !important;
+  resize: vertical !important;
+  line-height: 1.6 !important;
+}
+
+/* Select Dropdown */
+select {
+  cursor: pointer !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e") !important;
+  background-position: right 12px center !important;
+  background-repeat: no-repeat !important;
+  background-size: 16px !important;
+  padding-right: 40px !important;
+}
+
+/* ===========================================
+   MARKDOWN EDITOR IMPROVEMENTS
+   =========================================== */
+
+/* Editor Toolbar */
+[class*="EditorToolbar"] {
+  background: #F8FAFC !important;
+  border-bottom: 1px solid var(--border) !important;
+  padding: var(--spacing-md) !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: var(--spacing-sm) !important;
+}
+
+[class*="EditorToolbar"] button {
+  background: var(--surface) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--spacing-xs) !important;
+  padding: var(--spacing-sm) var(--spacing-md) !important;
+  color: var(--text-secondary) !important;
+  font-size: var(--font-size-sm) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+[class*="EditorToolbar"] button:hover {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border-color: var(--accent-color) !important;
+}
+
+/* Editor Text Area */
+[class*="EditorTextArea"] {
+  font-family: 'JetBrains Mono', 'Monaco', 'Menlo', monospace !important;
+  font-size: var(--font-size-base) !important;
+  line-height: 1.8 !important;
+  padding: var(--spacing-lg) !important;
+  border: none !important;
+  resize: none !important;
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ===========================================
+   BUTTONS & ACTIONS IMPROVEMENTS
+   =========================================== */
+
+/* Primary Action Buttons */
+button[class*="ButtonPrimary"],
+.btn-primary {
+  background: var(--accent-color) !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: var(--spacing-sm) !important;
+}
+
+button[class*="ButtonPrimary"]:hover,
+.btn-primary:hover {
+  background: #EA580C !important;
+  transform: translateY(-1px) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Secondary Buttons */
+button[class*="ButtonSecondary"],
+.btn-secondary {
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: 500 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+button[class*="ButtonSecondary"]:hover,
+.btn-secondary:hover {
+  background: #F3F4F6 !important;
+  border-color: var(--accent-color) !important;
+  color: var(--accent-color) !important;
+}
+
+/* Danger Buttons */
+button[class*="ButtonDanger"],
+.btn-danger {
+  background: #EF4444 !important;
+  color: white !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  font-size: var(--font-size-base) !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+button[class*="ButtonDanger"]:hover,
+.btn-danger:hover {
+  background: #DC2626 !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ===========================================
+   LIST & OBJECT FIELD IMPROVEMENTS
+   =========================================== */
+
+/* List Field Container */
+[class*="ListField"] {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--border-radius) !important;
+  background: var(--surface) !important;
+  padding: var(--spacing-lg) !important;
+}
+
+[class*="ListItem"] {
+  background: #F8FAFC !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--border-radius) !important;
+  margin: var(--spacing-sm) 0 !important;
+  padding: var(--spacing-md) !important;
+  position: relative !important;
+}
+
+/* Object Field Container */
+[class*="ObjectField"] {
+  border: 1px solid var(--border) !important;
+  border-radius: var(--border-radius) !important;
+  background: var(--surface) !important;
+  padding: var(--spacing-lg) !important;
+  margin: var(--spacing-md) 0 !important;
+}
+
+/* ===========================================
+   MEDIA UPLOAD IMPROVEMENTS
+   =========================================== */
+
+/* Media Upload Area */
+[class*="MediaUpload"] {
+  border: 2px dashed var(--border) !important;
+  border-radius: var(--border-radius) !important;
+  padding: var(--spacing-xl) !important;
+  text-align: center !important;
+  background: #FEFEFE !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+[class*="MediaUpload"]:hover {
+  border-color: var(--accent-color) !important;
+  background: #FFF7ED !important;
+}
+
+[class*="MediaUpload"] p {
+  color: var(--text-secondary) !important;
+  font-size: var(--font-size-base) !important;
+  margin: var(--spacing-sm) 0 !important;
+}
+
+/* Media Preview */
+[class*="MediaPreview"] img {
+  max-width: 200px !important;
+  max-height: 200px !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow) !important;
+  object-fit: cover !important;
+}
+
+/* ===========================================
+   STATUS & NOTIFICATION IMPROVEMENTS
+   =========================================== */
+
+/* Status Messages */
+[class*="StatusMessage"] {
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  border-radius: var(--border-radius) !important;
+  margin: var(--spacing-md) 0 !important;
+  font-weight: 500 !important;
+}
+
+[class*="StatusMessage"][class*="success"] {
+  background: #ECFDF5 !important;
+  color: #065F46 !important;
+  border: 1px solid #A7F3D0 !important;
+}
+
+[class*="StatusMessage"][class*="error"] {
+  background: #FEF2F2 !important;
+  color: #991B1B !important;
+  border: 1px solid #FCA5A5 !important;
+}
+
+[class*="StatusMessage"][class*="warning"] {
+  background: #FFFBEB !important;
+  color: #92400E !important;
+  border: 1px solid #FDE68A !important;
+}
+
+/* ===========================================
+   RESPONSIVE IMPROVEMENTS
+   =========================================== */
+
+@media (max-width: 768px) {
+  [class*="Sidebar"] {
+    width: 100% !important;
+    position: fixed !important;
+    top: 70px !important;
+    left: -100% !important;
+    height: calc(100vh - 70px) !important;
+    transition: left 0.3s ease !important;
+    z-index: 1000 !important;
+  }
+
+  [class*="Sidebar"].open {
+    left: 0 !important;
+  }
+
+  [class*="App-content"] {
+    padding: var(--spacing-lg) !important;
+  }
+
+  [class*="CollectionTop"],
+  [class*="EditorContainer"] {
+    padding: var(--spacing-md) !important;
+  }
+
+  [class*="EntryCard"] {
+    margin: var(--spacing-sm) 0 !important;
+    padding: var(--spacing-md) !important;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY IMPROVEMENTS
+   =========================================== */
+
+/* Focus States */
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+[tabindex]:focus {
+  outline: 2px solid var(--accent-color) !important;
+  outline-offset: 2px !important;
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+  :root {
+    --border: #000000;
+    --text-secondary: #000000;
+    --shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===========================================
+   PREVIEW STYLES (for content preview pane)
+   =========================================== */
+
+.frame-content {
+  font-family: 'Inter', sans-serif !important;
+  line-height: 1.7 !important;
+  color: var(--text-primary) !important;
+  max-width: 800px !important;
+  margin: 0 auto !important;
+  padding: var(--spacing-xl) !important;
+}
+
+.frame-content img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow) !important;
+  margin: var(--spacing-lg) 0 !important;
+}
+
+.frame-content h1,
+.frame-content h2,
+.frame-content h3,
+.frame-content h4,
+.frame-content h5,
+.frame-content h6 {
+  color: var(--primary-color) !important;
+  font-weight: 700 !important;
+  margin-top: var(--spacing-xl) !important;
+  margin-bottom: var(--spacing-md) !important;
+  line-height: 1.4 !important;
+}
+
+.frame-content h1 { font-size: var(--font-size-2xl) !important; }
+.frame-content h2 { font-size: var(--font-size-xl) !important; }
+.frame-content h3 { font-size: var(--font-size-lg) !important; }
+
+.frame-content p {
+  margin: var(--spacing-md) 0 !important;
+  line-height: 1.7 !important;
+}
+
+.frame-content ul,
+.frame-content ol {
+  margin: var(--spacing-md) 0 !important;
+  padding-left: var(--spacing-xl) !important;
+}
+
+.frame-content li {
+  margin: var(--spacing-sm) 0 !important;
+  line-height: 1.6 !important;
+}
+
+.frame-content blockquote {
+  border-left: 4px solid var(--accent-color) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  margin: var(--spacing-lg) 0 !important;
+  background: #FFF7ED !important;
+  font-style: italic !important;
+}
+
+.frame-content code {
+  background: #F3F4F6 !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 14px !important;
+}
+
+.frame-content pre {
+  background: #1F2937 !important;
+  color: #F9FAFB !important;
+  padding: var(--spacing-lg) !important;
+  border-radius: var(--border-radius) !important;
+  overflow-x: auto !important;
+  margin: var(--spacing-lg) 0 !important;
+}
+
+.frame-content pre code {
+  background: none !important;
+  padding: 0 !important;
+  color: inherit !important;
+}
+
+/* ===========================================
+   LOADING STATES
+   =========================================== */
+
+[class*="Loading"] {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: var(--spacing-xl) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Spinner Animation */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 24px !important;
+  height: 24px !important;
+  border: 2px solid var(--border) !important;
+  border-top: 2px solid var(--accent-color) !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+
+.mt-sm { margin-top: var(--spacing-sm) !important; }
+.mt-md { margin-top: var(--spacing-md) !important; }
+.mt-lg { margin-top: var(--spacing-lg) !important; }
+
+.mb-sm { margin-bottom: var(--spacing-sm) !important; }
+.mb-md { margin-bottom: var(--spacing-md) !important; }
+.mb-lg { margin-bottom: var(--spacing-lg) !important; }

@@ -1,0 +1,77 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        background: '#F9FAFB',
+        surface: '#FFFFFF',
+        primary: '#111827',
+        'text-primary': '#1F2937',
+        'text-secondary': '#6B7280',
+        accent: '#F97316',
+        border: '#E5E7EB',
+        gray: {
+          50: '#F9FAFB',
+          100: '#F3F4F6',
+          200: '#E5E7EB',
+          300: '#D1D5DB',
+          400: '#9CA3AF',
+          500: '#6B7280',
+          600: '#4B5563',
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+        },
+      },
+      fontFamily: {
+        sans: ['Inter', 'Kanit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        thai: ['Kanit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'xs': ['0.75rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
+        'sm': ['0.875rem', { lineHeight: '1.5', letterSpacing: '0.025em' }],
+        'base': ['1rem', { lineHeight: '1.6', letterSpacing: '0' }],
+        'lg': ['1.125rem', { lineHeight: '1.6', letterSpacing: '0' }],
+        'xl': ['1.25rem', { lineHeight: '1.5', letterSpacing: '-0.025em' }],
+        '2xl': ['1.5rem', { lineHeight: '1.4', letterSpacing: '-0.025em' }],
+        '3xl': ['1.875rem', { lineHeight: '1.3', letterSpacing: '-0.025em' }],
+        '4xl': ['2.25rem', { lineHeight: '1.2', letterSpacing: '-0.025em' }],
+        '5xl': ['3rem', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
+        '6xl': ['3.75rem', { lineHeight: '1', letterSpacing: '-0.025em' }],
+      },
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+      },
+      screens: {
+        'xs': '475px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
+      },
+      borderRadius: {
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+      },
+      boxShadow: {
+        'sm': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+        'DEFAULT': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+        'md': '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        'lg': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        'xl': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+        'card': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px 0 rgb(0 0 0 / 0.06)',
+        'card-hover': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05)',
+      },
+    },
+  },
+  plugins: [],
+}

@@ -45,7 +45,7 @@ async function getReviewData(slug: string) {
       frontmatter: data as ReviewFrontmatter,
       content: contentHtml,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
@@ -56,23 +56,29 @@ export async function generateMetadata({ params }: ReviewProps): Promise<Metadat
   
   if (!reviewData) {
     return {
-      title: 'Review Not Found',
-      description: 'The requested review could not be found.',
+      title: 'ไม่พบรีวิว - Dealsdee',
+      description: 'ไม่พบรีวิวที่คุณกำลังมองหา',
     };
   }
   
   const { frontmatter } = reviewData;
   
   return {
-    title: frontmatter.title,
-    description: `Expert review of ${frontmatter.title.split(':')[0]}. Score: ${frontmatter.score}/10. Read our in-depth analysis with pros, cons, and buying advice.`,
+    title: `${frontmatter.title} - Dealsdee`,
+    description: `รีวิวเชิงลึก ${frontmatter.title.split(':')[0]} คะแนน ${frontmatter.score}/10 พร้อมข้อดี ข้อเสีย และคำแนะนำการซื้อ`,
     openGraph: {
       title: frontmatter.title,
-      description: `Expert review with ${frontmatter.score}/10 rating. Discover the pros and cons before buying.`,
+      description: `รีวิวเชิงลึกด้วยคะแนน ${frontmatter.score}/10 ค้นพบข้อดีและข้อเสียก่อนตัดสินใจซื้อ`,
       images: [frontmatter.featuredImage],
       type: 'article',
       publishedTime: frontmatter.date,
       authors: [frontmatter.author],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: frontmatter.title,
+      description: `รีวิวเชิงลึก - คะแนน ${frontmatter.score}/10`,
+      images: [frontmatter.featuredImage],
     },
   };
 }
@@ -83,11 +89,18 @@ export default async function ReviewPage({ params }: ReviewProps) {
   
   if (!reviewData) {
     return (
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-center mb-4">Review Not Found</h1>
-        <p className="text-center text-text-secondary">
-          The review you're looking for doesn't exist.
-        </p>
+      <div>
+        <div>
+          <h1>ไม่พบรีวิว</h1>
+          <p>
+            ไม่พบรีวิวที่คุณกำลังมองหา
+          </p>
+          <Link href="/">
+            <Button variant="primary">
+              กลับไปหน้าหลัก
+            </Button>
+          </Link>
+        </div>
       </div>
     );
   }
@@ -95,17 +108,17 @@ export default async function ReviewPage({ params }: ReviewProps) {
   const { frontmatter, content } = reviewData;
   
   return (
-    <article className="py-8 md:py-12">
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Title Section */}
-          <header className="mb-8">
-            <h1 className="mb-4">{frontmatter.title}</h1>
-            <div className="flex flex-wrap gap-4 text-sm text-text-secondary">
-              <span>By {frontmatter.author}</span>
+    <article>
+      <div>
+        {/* Article Header */}
+        <header>
+          <div>
+            <h1>{frontmatter.title}</h1>
+            <div>
+              <span>โดย {frontmatter.author}</span>
               <span>•</span>
               <time dateTime={frontmatter.date}>
-                {new Date(frontmatter.date).toLocaleDateString('en-US', {
+                {new Date(frontmatter.date).toLocaleDateString('th-TH', {
                   year: 'numeric',
                   month: 'long',
                   day: 'numeric'
@@ -114,57 +127,41 @@ export default async function ReviewPage({ params }: ReviewProps) {
               <span>•</span>
               <span>{frontmatter.category}</span>
             </div>
-          </header>
-          
-          <div className="lg:flex lg:gap-8">
-            {/* Main Content Column */}
-            <div className="lg:flex-1 max-w-[800px]">
-              {/* Mobile Magic Box */}
-              <div className="lg:hidden mb-8">
-                <MagicBox frontmatter={frontmatter} />
-              </div>
-              
-              {/* Featured Image */}
-              <div className="relative h-[400px] w-full mb-8 bg-gray-200 rounded-lg overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center text-text-secondary">
-                  [Featured Image Placeholder]
-                </div>
-                {/* Uncomment when you have actual images
-                <Image
-                  src={frontmatter.featuredImage}
-                  alt={frontmatter.title}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                */}
-              </div>
-              
-              {/* Article Content */}
-              <div 
-                className="prose prose-lg max-w-none
-                  prose-headings:text-text-primary 
-                  prose-h2:text-2xl prose-h2:font-bold prose-h2:mt-8 prose-h2:mb-4
-                  prose-h3:text-xl prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3
-                  prose-p:text-text-primary prose-p:leading-relaxed
-                  prose-ul:text-text-primary prose-ol:text-text-primary
-                  prose-li:marker:text-accent
-                  prose-strong:text-text-primary prose-strong:font-semibold
-                  prose-a:text-accent prose-a:no-underline hover:prose-a:underline
-                  prose-table:border-collapse prose-table:w-full
-                  prose-th:border prose-th:border-gray-300 prose-th:p-2 prose-th:bg-gray-100
-                  prose-td:border prose-td:border-gray-300 prose-td:p-2"
-                dangerouslySetInnerHTML={{ __html: content }}
+          </div>
+        </header>
+        
+        <div>
+          {/* Main Content Column */}
+          <div>
+            {/* Mobile Magic Box */}
+            <div>
+              <MagicBox frontmatter={frontmatter} />
+            </div>
+            
+            {/* Featured Image */}
+            <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-gray-100">
+              <Image
+                src={frontmatter.featuredImage || "/images/placeholder.svg"}
+                alt={frontmatter.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 66vw"
+                priority
               />
             </div>
             
-            {/* Desktop Sticky Sidebar */}
-            <aside className="hidden lg:block lg:w-[320px]">
-              <div className="sticky top-24">
-                <MagicBox frontmatter={frontmatter} />
-              </div>
-            </aside>
+            {/* Article Content */}
+            <div 
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
           </div>
+          
+          {/* Desktop Sticky Sidebar - Magic Box */}
+          <aside>
+            <div>
+              <MagicBox frontmatter={frontmatter} />
+            </div>
+          </aside>
         </div>
       </div>
     </article>
@@ -173,41 +170,38 @@ export default async function ReviewPage({ params }: ReviewProps) {
 
 function MagicBox({ frontmatter }: { frontmatter: ReviewFrontmatter }) {
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-accent/20">
-      <div className="text-center mb-6">
-        <div className="text-5xl font-bold text-accent mb-2">
+    <div>
+      {/* Score */}
+      <div>
+        <div>
           {frontmatter.score}
         </div>
-        <div className="text-text-secondary">out of 10</div>
+        <div>จาก 10</div>
       </div>
       
       {/* Featured Image in Magic Box */}
-      <div className="relative h-48 w-full mb-6 bg-gray-200 rounded-lg overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center text-text-secondary text-sm">
-          [Product Image]
-        </div>
-        {/* Uncomment when you have actual images
+      <div className="relative w-full aspect-square rounded-lg overflow-hidden bg-gray-100 mb-4">
         <Image
-          src={frontmatter.featuredImage}
+          src={frontmatter.featuredImage || "/images/placeholder.svg"}
           alt={frontmatter.title}
           fill
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, 300px"
         />
-        */}
       </div>
       
       {/* Pros */}
-      <div className="mb-4">
-        <h3 className="font-semibold text-green-600 mb-2 flex items-center">
-          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <div>
+        <h3>
+          <svg fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          Pros
+          ข้อดี
         </h3>
-        <ul className="space-y-1 text-sm">
+        <ul>
           {frontmatter.pros.map((pro, index) => (
-            <li key={index} className="flex items-start">
-              <span className="text-green-600 mr-2">✓</span>
+            <li key={index}>
+              <span>✅</span>
               <span>{pro}</span>
             </li>
           ))}
@@ -215,17 +209,17 @@ function MagicBox({ frontmatter }: { frontmatter: ReviewFrontmatter }) {
       </div>
       
       {/* Cons */}
-      <div className="mb-6">
-        <h3 className="font-semibold text-red-600 mb-2 flex items-center">
-          <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+      <div>
+        <h3>
+          <svg fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
           </svg>
-          Cons
+          ข้อเสีย
         </h3>
-        <ul className="space-y-1 text-sm">
+        <ul>
           {frontmatter.cons.map((con, index) => (
-            <li key={index} className="flex items-start">
-              <span className="text-red-600 mr-2">✗</span>
+            <li key={index}>
+              <span>❌</span>
               <span>{con}</span>
             </li>
           ))}
@@ -233,20 +227,26 @@ function MagicBox({ frontmatter }: { frontmatter: ReviewFrontmatter }) {
       </div>
       
       {/* CTA Buttons */}
-      <div className="space-y-3">
+      <div>
         {frontmatter.affiliate.amazon && (
           <Link href={frontmatter.affiliate.amazon} target="_blank" rel="noopener noreferrer">
-            <Button variant="primary" className="w-full">
-              Check Price on Amazon
+            <Button variant="primary">
+              ตรวจสอบราคาบน Amazon
             </Button>
           </Link>
         )}
         {frontmatter.affiliate.manufacturer && (
           <Link href={frontmatter.affiliate.manufacturer} target="_blank" rel="noopener noreferrer">
-            <Button variant="secondary" className="w-full">
-              View on Manufacturer Site
+            <Button variant="secondary">
+              ดูในเว็บไซต์ผู้ผลิต
             </Button>
           </Link>
+        )}
+        
+        {!frontmatter.affiliate.amazon && !frontmatter.affiliate.manufacturer && (
+          <Button variant="primary" disabled>
+            ลิงก์ซื้อสินค้า (เร็วๆ นี้)
+          </Button>
         )}
       </div>
     </div>

@@ -1,0 +1,7 @@
+<svg width="800" height="450" viewBox="0 0 800 450" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="450" fill="#F3F4F6"/>
+  <rect x="300" y="175" width="200" height="100" rx="12" fill="#E5E7EB"/>
+  <circle cx="350" cy="200" r="15" fill="#9CA3AF"/>
+  <path d="M335 215L350 200L365 215L380 200L395 215" stroke="#9CA3AF" stroke-width="2" fill="none"/>
+  <text x="400" y="235" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#6B7280" text-anchor="middle">รูปภาพสินค้า</text>
+</svg>

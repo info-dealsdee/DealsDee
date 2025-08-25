@@ -9,28 +9,28 @@ interface CategoryPageProps {
 
 const categories: Record<string, { name: string; description: string }> = {
   'office-chairs': {
-    name: 'Office Chairs',
-    description: 'Ergonomic office chairs for comfortable all-day work sessions'
+    name: 'เก้าอี้สำนักงาน',
+    description: 'เก้าอี้เพื่อสุขภาพสำหรับการทำงานแบบสบายตลอดทั้งวัน'
   },
   'standing-desks': {
-    name: 'Standing Desks',
-    description: 'Height-adjustable desks for a healthier work posture'
+    name: 'โต๊ะยืน',
+    description: 'โต๊ะปรับความสูงได้สำหรับท่าทางการทำงานที่ดีต่อสุขภาพ'
   },
   'monitors': {
-    name: 'Monitors',
-    description: 'High-quality displays for productivity and eye comfort'
+    name: 'จอภาพ',
+    description: 'จอภาพคุณภาพสูงสำหรับผลิตภาพและความสบายของดวงตา'
   },
   'keyboards': {
-    name: 'Keyboards',
-    description: 'Ergonomic keyboards to prevent repetitive strain injuries'
+    name: 'คีย์บอร์ด',
+    description: 'คีย์บอร์ดเพื่อสุขภาพเพื่อป้องกันการบาดเจ็บจากการใช้งานซ้ำ'
   },
   'mice': {
-    name: 'Mice & Trackpads',
-    description: 'Precision pointing devices designed for comfort'
+    name: 'เมาส์และแทร็กแพด',
+    description: 'อุปกรณ์ชี้จุดความแม่นยำสูงที่ออกแบบมาเพื่อความสบาย'
   },
   'lighting': {
-    name: 'Desk Lighting',
-    description: 'Task lighting to reduce eye strain and improve focus'
+    name: 'ไฟโต๊ะทำงาน',
+    description: 'ไฟส่องสว่างเพื่อลดความเมื่อยล้าของดวงตาและเพิ่มความตั้งใจ'
   }
 };
 
@@ -40,8 +40,8 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   
   if (!category) {
     return {
-      title: 'Category Not Found',
-      description: 'The requested category could not be found.',
+      title: 'ไม่พบหมวดหมู่',
+      description: 'ไม่พบหมวดหมู่ที่คุณกำลังมองหา',
     };
   }
   
@@ -62,14 +62,14 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   
   if (!category) {
     return (
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-center mb-4">Category Not Found</h1>
-        <p className="text-center text-text-secondary">
-          The category you're looking for doesn't exist.
+      <div>
+        <h1>ไม่พบหมวดหมู่</h1>
+        <p>
+          The category you&apos;re looking for doesn&apos;t exist.
         </p>
-        <div className="text-center mt-8">
+        <div>
           <Link href="/">
-            <Button variant="primary">Back to Homepage</Button>
+            <Button variant="primary">กลับไปหน้าหลัก</Button>
           </Link>
         </div>
       </div>
@@ -88,114 +88,85 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   }));
   
   return (
-    <div className="py-8 md:py-12">
-      <div className="container mx-auto px-4">
+    <div>
+      <div>
         {/* Category Header */}
-        <header className="text-center mb-12">
-          <h1 className="mb-4">{category.name}</h1>
-          <p className="text-xl text-text-secondary max-w-3xl mx-auto">
+        <header>
+          <h1>{category.name}</h1>
+          <p>
             {category.description}
           </p>
         </header>
         
         {/* Filter Bar (placeholder) */}
-        <div className="bg-white rounded-lg shadow-sm p-4 mb-8">
-          <div className="flex flex-wrap gap-4 items-center justify-between">
-            <div className="flex gap-2">
-              <button className="px-4 py-2 rounded-lg bg-accent text-white text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
-                All Products
+        <div>
+          <div>
+            <div>
+              <button>
+                สินค้าทั้งหมด
               </button>
-              <button className="px-4 py-2 rounded-lg bg-gray-100 text-text-secondary text-sm hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
-                Top Rated
+              <button>
+                คะแนนสูงสุด
               </button>
-              <button className="px-4 py-2 rounded-lg bg-gray-100 text-text-secondary text-sm hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
-                Budget Friendly
+              <button>
+                ราคาเอื้อมถึง
               </button>
-              <button className="px-4 py-2 rounded-lg bg-gray-100 text-text-secondary text-sm hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
-                Premium
+              <button>
+                พรีเมี่ยม
               </button>
             </div>
-            <div className="flex items-center gap-2">
-              <label htmlFor="sort" className="text-sm text-text-secondary">Sort by:</label>
+            <div>
+              <label htmlFor="sort">เรียงตาม:</label>
               <select 
                 id="sort"
-                className="px-3 py-2 rounded-lg border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent"
               >
-                <option>Latest Reviews</option>
-                <option>Highest Rated</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
+                <option>รีวิวล่าสุด</option>
+                <option>คะแนนสูงสุด</option>
+                <option>ราคา: ต่ำไปสูง</option>
+                <option>ราคา: สูงไปต่ำ</option>
               </select>
             </div>
           </div>
         </div>
         
         {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div>
           {products.map((product) => (
-            <Card key={product.id} className="hover:shadow-xl transition-all duration-200">
-              <article className="space-y-4">
-                {/* Product Image Placeholder */}
-                <div className="bg-gray-200 h-48 rounded-md flex items-center justify-center text-text-secondary">
-                  [Product Image]
-                </div>
-                
-                {/* Product Info */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="bg-accent text-white text-xs px-2 py-1 rounded-full font-semibold">
-                      {product.score}/10
-                    </span>
-                    <span className="text-sm text-text-secondary">{product.price}</span>
-                  </div>
-                  
-                  <h3 className="text-lg font-semibold line-clamp-2">
-                    {product.title}
-                  </h3>
-                  
-                  <p className="text-sm text-text-secondary line-clamp-3">
-                    {product.excerpt}
-                  </p>
-                  
-                  <div className="text-xs text-text-secondary">
-                    {product.date}
-                  </div>
-                </div>
-                
-                {/* CTA Button */}
-                <Link href={`/reviews/${resolvedParams.slug}-${product.slug}`}>
-                  <Button variant="secondary" className="w-full">
-                    Read Review
-                  </Button>
-                </Link>
-              </article>
-            </Card>
+            <Card 
+              key={product.id}
+              title={product.title}
+              description={product.excerpt}
+              excerpt={product.excerpt}
+              imageUrl="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=800&h=450&fit=crop"
+              href={`/reviews/${resolvedParams.slug}-${product.slug}`}
+              date={product.date}
+              score={product.score}
+              price={product.price}
+            />
           ))}
         </div>
         
         {/* Pagination */}
-        <nav className="mt-12 flex justify-center" aria-label="Pagination">
-          <div className="flex gap-2">
+        <nav aria-label="Pagination">
+          <div>
             <button 
-              className="px-4 py-2 rounded-lg bg-gray-100 text-text-secondary hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               aria-label="Previous page"
             >
-              Previous
+              ก่อนหน้า
             </button>
-            <button className="px-4 py-2 rounded-lg bg-accent text-white font-semibold focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+            <button>
               1
             </button>
-            <button className="px-4 py-2 rounded-lg bg-gray-100 text-text-secondary hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+            <button>
               2
             </button>
-            <button className="px-4 py-2 rounded-lg bg-gray-100 text-text-secondary hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2">
+            <button>
               3
             </button>
             <button 
-              className="px-4 py-2 rounded-lg bg-gray-100 text-text-secondary hover:bg-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
               aria-label="Next page"
             >
-              Next
+              ถัดไป
             </button>
           </div>
         </nav>

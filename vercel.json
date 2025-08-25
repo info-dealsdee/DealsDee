@@ -1,0 +1,20 @@
+{
+  "redirects": [
+    {
+      "source": "/go/sample-shopee-deal",
+      "destination": "https://shopee.co.th/product/123456789/987654321?af_siteid=yoursite&af_sub_siteid=dealsdee&af_click_lookback=7d",
+      "permanent": false
+    },
+    {
+      "source": "/go/sample-lazada-deal", 
+      "destination": "https://www.lazada.co.th/products/sample-product-i123456789.html?spm=a2o4m.searchlistcategory&_keyori=ss&search=1&aff_short_key=_w_KkZD5jf",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    }
+  ]
+}

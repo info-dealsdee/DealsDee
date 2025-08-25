@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private routes (for future use)
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+Sitemap: https://dealsdee.com/sitemap.xml

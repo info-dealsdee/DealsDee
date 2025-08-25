@@ -1,50 +1,43 @@
 import Link from 'next/link';
 
-const Footer = () => {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-primary text-white mt-auto" role="contentinfo">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    <footer className="bg-text-primary text-white mt-auto" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-center md:text-left">
-            <p className="text-sm">
-              © {currentYear} Dealsdee. All rights reserved.
+            <div className="text-xl font-bold mb-2">Dealsdee</div>
+            <p className="text-sm text-gray-300">
+              © {currentYear} Dealsdee. สงวนลิขสิทธิ์
             </p>
           </div>
           
           <nav aria-label="Footer navigation">
-            <ul className="flex flex-wrap justify-center md:justify-end space-x-6 text-sm">
+            <ul className="flex flex-wrap justify-center md:justify-end gap-6 text-sm">
               <li>
                 <Link 
-                  href="/privacy-policy" 
-                  className="hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary rounded px-2 py-1"
+                  href="/about" 
+                  className="text-gray-300 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
                 >
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/terms-of-service" 
-                  className="hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary rounded px-2 py-1"
-                >
-                  Terms of Service
-                </Link>
-              </li>
-              <li>
-                <Link 
-                  href="/affiliate-disclosure" 
-                  className="hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary rounded px-2 py-1"
-                >
-                  Affiliate Disclosure
+                  เกี่ยวกับเรา
                 </Link>
               </li>
               <li>
                 <Link 
                   href="/contact" 
-                  className="hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary rounded px-2 py-1"
+                  className="text-gray-300 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
                 >
-                  Contact
+                  ติดต่อเรา
+                </Link>
+              </li>
+              <li>
+                <Link 
+                  href="/affiliate-disclosure" 
+                  className="text-gray-300 hover:text-accent transition-colors focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-gray-900 rounded px-2 py-1"
+                >
+                  นโยบาย Affiliate
                 </Link>
               </li>
             </ul>
@@ -53,6 +46,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
