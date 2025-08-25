@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
   experimental: {
     turbo: process.env.ANALYZE !== 'true' ? {} : undefined,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
   async headers() {
     return [
       {
