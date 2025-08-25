@@ -187,6 +187,7 @@ function MagicBox({ frontmatter }: { frontmatter: ReviewFrontmatter }) {
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 300px"
+          priority
         />
       </div>
       

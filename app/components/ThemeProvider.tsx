@@ -54,12 +54,14 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
-  // Prevent hydration mismatch
+  // Prevent hydration mismatch - always return provider during SSR
   if (!mounted) {
     return (
-      <div className="light">
-        {children}
-      </div>
+      <ThemeContext.Provider value={{ theme: 'light', toggleTheme: () => {} }}>
+        <div className="light">
+          {children}
+        </div>
+      </ThemeContext.Provider>
     );
   }
 

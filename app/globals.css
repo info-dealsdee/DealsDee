@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Kanit:wght@300;400;500;600;700;800&display=swap');
+/* Fonts are now loaded via next/font for better performance */
 
 @tailwind base;
 @tailwind components;
@@ -12,7 +12,7 @@
   }
 
   body {
-    font-family: 'Inter', 'Kanit', ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-inter), var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
     background-color: #F9FAFB;
     color: #1F2937;
     line-height: 1.6;
@@ -30,7 +30,7 @@
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: -0.025em;
-    font-family: 'Inter', 'Kanit', ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-inter), var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
     color: #111827;
     transition: color 0.3s ease;
   }
@@ -69,7 +69,7 @@
   }
 
   .thai-text {
-    font-family: 'Kanit', ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-kanit), ui-sans-serif, system-ui, sans-serif;
   }
 
   *:focus-visible {

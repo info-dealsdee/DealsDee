@@ -1,8 +1,23 @@
 import type { Metadata } from "next";
+import { Inter, Kanit } from "next/font/google";
 import "./globals.css";
 import Layout from "./components/Layout";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { OrganizationSchema, WebsiteSchema } from "./components/StructuredData";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const kanit = Kanit({
+  subsets: ["thai", "latin"],
+  display: "swap",
+  variable: "--font-kanit",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://dealsdee.com'),
@@ -56,8 +71,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="th" suppressHydrationWarning>
-      <body suppressHydrationWarning>
+    <html lang="th" suppressHydrationWarning className={`${inter.variable} ${kanit.variable}`}>
+      <body suppressHydrationWarning className={inter.className}>
         <OrganizationSchema 
           name="Dealsdee"
           url="https://dealsdee.com"
