@@ -1,0 +1,21 @@
+{
+  "name": "Dealsdee",
+  "short_name": "Dealsdee",
+  "description": "Dealsdee: ค้นหาดีลและรีวิวที่ดีที่สุดสำหรับ Home Office",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#F97316",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

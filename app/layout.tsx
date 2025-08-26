@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Dealsdee Team" }],
   creator: "Dealsdee",
   publisher: "Dealsdee",
+  manifest: '/manifest.webmanifest',
   openGraph: {
     title: "Dealsdee: รีวิวและดีลที่ดีที่สุดสำหรับ Home Office",
     description: "ค้นหาเก้าอี้เพื่อสุขภาพ โต๊ะปรับระดับ และอุปกรณ์ทำงานที่คุ้มค่าที่สุด",
