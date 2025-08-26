@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Enabling Google Analytics
+
+To enable Google Analytics, you need to set up an environment variable in your hosting provider (e.g., Vercel):
+
+1. Create a new Google Analytics 4 (GA4) property to get your Measurement ID (it looks like `G-XXXXXXXXXX`).
+2. In your Vercel project settings, go to "Environment Variables".
+3. Create a new variable named `NEXT_PUBLIC_GA_ID` and paste your Measurement ID as the value.
+4. Redeploy the project. Analytics will now be active.

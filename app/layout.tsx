@@ -4,6 +4,8 @@ import "./globals.css";
 import Layout from "./components/Layout";
 import { ThemeProvider } from "./components/ThemeProvider";
 import { OrganizationSchema, WebsiteSchema } from "./components/StructuredData";
+import { Analytics } from "@vercel/analytics/react";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -90,6 +92,8 @@ export default function RootLayout({
             {children}
           </Layout>
         </ThemeProvider>
+        <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );
